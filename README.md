@@ -13,18 +13,6 @@ Jump to [What's new in 4.3.0?](#changelog)
 A boilerplate for **Node.js** web applications.
 
 
-<h4 align="center">Modern Theme</h4>
-
-![](https://lh6.googleusercontent.com/-KQTmCFNK6MM/U7OZpznjDuI/AAAAAAAAERc/h3jR27Uy1lE/w1366-h1006-no/Screenshot+2014-07-02+01.32.22.png)
-
-<h4 align="center">Flatly Bootstrap Theme</h4>
-
-![](https://lh5.googleusercontent.com/-oJ-7bSYisRY/U1a-WhK_LoI/AAAAAAAAECM/a04fVYgefzw/w1474-h1098-no/Screen+Shot+2014-04-22+at+3.08.33+PM.png)
-
-<h4 align="center">API Examples</h4>
-
-![](https://lh5.googleusercontent.com/-BJD2wK8CvC8/VLodBsyL-NI/AAAAAAAAEx0/SafE6o_qq_I/w1818-h1186-no/Screenshot%2B2015-01-17%2B00.25.49.png)
-
 Table of Contents
 -----------------
 
@@ -98,7 +86,7 @@ The easiest way to get started is to clone the repository:
 
 ```bash
 # Get the latest snapshot
-git clone --depth=1 https://github.com/sahat/hackathon-starter.git myproject
+git clone --depth=1 https://github.com/gommorach/starter.git myproject
 
 # Change directory
 cd myproject
