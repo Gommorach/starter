@@ -1,0 +1,72 @@
+function initMap() {
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 6,
+        center: city.coords,
+        mapTypeId: 'terrain'
+    });
+
+    var marker = new google.maps.Marker({
+        position: city.coords,
+        map: map,
+        title: city.title,
+        icon: "http://maps.gstatic.com/mapfiles/ms2/micons/lightblue.png"
+    });
+
+    /* var marker2 = new google.maps.Marker({
+        position: convoycoords,
+        map: map,
+        title: 'convoy'
+    });*/
+
+    var contentString = '<div id="content">' +
+        '<div id="siteNotice">' +
+        '</div>' +
+        '<h1 id="firstHeading" class="firstHeading">' + city.title + '</h1>' +
+        '<div id="bodyContent">' +
+        '<p><b>Country: </b>' + city.country + '</p>' +
+        '<p><b>Area: </b>' + city.area + '</p>' +
+        '<p><b>Population: </b>' + city.population + '</p>' +
+        '</div>' +
+        '</div>';
+
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    marker.addListener('click', function () {
+        infowindow.open(map, marker);
+    });
+
+    // Add the circle for this city to the map.
+    var cityCircle = new google.maps.Circle({
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35,
+        map: map,
+        center: city.coords,
+        radius: Math.sqrt(city.population) * 10
+    });
+
+
+    /*var point = new google.maps.LatLng(city.coords.lat, city.coords.lng);
+    var spherical = google.maps.geometry.spherical;
+    var north = spherical.computeOffset(point, 100*1000, 0);
+    var west = spherical.computeOffset(point, 5000, -90);
+    var south = spherical.computeOffset(point, 5000, 180);
+    var east = spherical.computeOffset(point, 5000, 90);
+
+    var marker2 = new google.maps.Marker({
+        position: north,
+        map: map,
+        title: 'convoy',
+        icon: "http://maps.gstatic.com/mapfiles/ms2/micons/lightblue.png"
+    });*/
+}
+
+/* HTML
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbJ7rX4b4JvN6jwORJDwwUNGsFdl-2QHU&callback=initMap&libraries=geometry&sensor=false"
+async defer></script>*/
