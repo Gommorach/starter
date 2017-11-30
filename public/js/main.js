@@ -88,6 +88,10 @@ $(document).ready(function () {
       $.get('/getcoordinates', (data) => {
         console.log(data);
       });
+      1
+      $.post( "getcoordinates", { city: city }, (data) => {
+        console.log(data);
+      } );
     });
 
 

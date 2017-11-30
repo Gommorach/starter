@@ -148,7 +148,7 @@ app.get('/data', dataController.getSampleData);
 
 // my routes
 app.get('/cities', citiesController.getCities);
-app.get('/getcoordinates', citiesController.getCoordinates);
+app.post('/getcoordinates', citiesController.getCoordinates);
 app.get('/convoys', convoysController.getConvoys);
 app.get('/dmv', dmvController.getDmv);
 app.get('/dashboard', dashboardController.getDashboard);
