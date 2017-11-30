@@ -13,7 +13,7 @@ exports.getCities = (req, res) => {
 };
 
 exports.getCoordinates = (req, res) => {
-    let cityId = req.id;
+    let cityId = req.city.id;
 
     let city = {
         coords: '',
@@ -105,5 +105,7 @@ exports.getCoordinates = (req, res) => {
         default:
             city.coords = {lat: '0', lng: '0'};
     }
+  res.setHeader('Content-Type', 'application/json');
+  res.send(city);
 
 };

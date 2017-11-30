@@ -51,6 +51,16 @@ $(document).ready(function () {
     $('.city-modal-convoys').append(template);
   }
 
+  let displayCityHistory = (city) => {
+    let $populationHistory = $('.city-modal-population-history');
+    let cityHistory = JSON.parse(localStorage.getItem('cityHistory'));
+    if (!cityHistory) {
+      $populationHistory.append('<h3>No history data yet</h3>')
+    } else {
+      console.log(_.find({name: city}));
+    }
+  };
+
   // call cities api
   console.log(window.url);
   if (window.location.pathname.endsWith('cities')) {
@@ -70,9 +80,14 @@ $(document).ready(function () {
             <h2>Current convoys: </h2>
             <div class="city-modal-convoys"></div>
             <h2> Population history: </h2>
+            <div class="city-modal-population-history"></div>
             <h2>Kaart</h2>
       `;
       $('body .modal-body').html(modalBody);
+      displayCityHistory(cityName);
+      $.get('/getcoordinates', (data) => {
+        console.log(data);
+      });
     });
 
 
@@ -97,6 +112,26 @@ $(document).ready(function () {
                                 <td><a href="#" data-id="${city.id}"">pin</a> </td> 
                             </tr>`;
             $citiesList.find('tbody').append(cityTemplate);
+            let citiesInHistory;
+            if (!localStorage.getItem('cities')) {
+              citiesInHistory = [];
+            } else {
+              citiesInHistory = JSON.parse(localStorage.getItem('cities'));
+            }
+            cities.forEach((city) => {
+              let foo = _.find(citiesInHistory, {name: city.name});
+              if (foo && foo.population[foo.population.length - 1].population < city.population) {
+                _.find(citiesInHistory, {name: city.name}).history.push(city.population);
+              } else {
+                citiesInHistory.push({
+                  name: city.name,
+                  history: [city.population]
+                });
+              }
+              if (city.population / city.area > 8500) {
+                // console.log(city.name + ' has a density of more than 8500 inhabitants per square kilometer');
+              }
+            });
           });
 
 
