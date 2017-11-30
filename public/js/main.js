@@ -2,10 +2,32 @@ $(document).ready(function() {
   // call cities api
   console.log(window.url);
   if (window.location.pathname.endsWith('cities')) {
+
     console.log('first cities call api');
     setTimeout(() => {
-      console.log(`call cities api`);
-    }, 10000);
+      fetch('http://cunning-convoys.azurewebsites.net/api/Cities').then((response) => {
+          return response.json();
+        })
+        .then((cities) => {
+        $citiesList = $('#cities-list');
+        $citiesList.find('tbody').empty();
+
+        cities.forEach((city, index) => {
+          let cityTemplate = `<tr>
+                                <th scope="row">                                    
+                                    <a href="#" data-id="${city.id}">${city.name}</a>    
+                                </th>
+                                <td>${city.population}</td>
+                                <td>${city.area}</td>
+                                <td>${city.country}</td> 
+                            </tr>`;
+          $citiesList.find('tbody').append(cityTemplate);
+        });
+
+
+      })
+        .catch(function(error) { console.log(error); });
+    }, 2000);
   }
 
   if (window.location.pathname.endsWith('convoys')) {

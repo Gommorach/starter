@@ -11,3 +11,15 @@ exports.getCities = (req, res) => {
     title: 'Cities'
   });
 };
+
+exports.getCoordinates = (req, res) => {
+  let cityId = req.id;
+  let coords = {};
+  switch (cityId) {
+    case '':
+      coords = {lat: '', lng: '' };
+      break;
+    default:
+      coords = {lat: '', lng: ''};
+  }
+};
