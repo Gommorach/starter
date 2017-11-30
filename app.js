@@ -36,9 +36,10 @@ const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 const chartsController = require('./controllers/charts');
 const dataController = require('./controllers/data');
-const citiesController = require('./controllers/cities')
-const convoysController = require('./controllers/convoys')
-const dmvController = require('./controllers/dmv')
+const citiesController = require('./controllers/cities');
+const convoysController = require('./controllers/convoys');
+const dmvController = require('./controllers/dmv');
+const dashboardController = require('./controllers/dashboard');
 
 /**
  * API keys and Passport configuration.
@@ -149,6 +150,7 @@ app.get('/data', dataController.getSampleData);
 app.get('/cities', citiesController.getCities);
 app.get('/convoys', convoysController.getConvoys);
 app.get('/dmv', dmvController.getDmv);
+app.get('/dashboard', dashboardController.getDashboard);
 
 /**
  * API examples routes.

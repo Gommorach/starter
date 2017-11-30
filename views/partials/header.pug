@@ -13,10 +13,6 @@
       ul.nav.navbar-nav
         li(class=(title === 'Home') ? 'active' : undefined)
           a(href='/') Home
-        li(class=(title === 'API Examples') ? 'active' : undefined)
-          a(href='/api') API Examples
-        li(class=(title === 'Contact') ? 'active' : undefined)
-          a(href='/contact') Contact
         li
         li(class=(title === 'Cities') ? 'active' : undefined)
           a(href='/cities') Cities
@@ -26,10 +22,12 @@
         li
         li(class=(title === 'DMV') ? 'active' : undefined)
           a(href='/dmv') DMV
+        li(class=(title === 'dashboard') ? 'active' : undefined)
+          a(href='/dashboard') dashboard
         li
           a(href='/status') Status
-        li(class=(title === 'Charts') ? 'active' : undefined)
-          a(href='/charts') Charts
+        li(class=(title === 'Contact') ? 'active' : undefined)
+          a(href='/contact') Contact
       ul.nav.navbar-nav.navbar-right
         if !user
           li(class=(title === 'Login') ? 'active' : undefined)

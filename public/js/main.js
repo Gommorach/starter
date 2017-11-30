@@ -2,21 +2,32 @@ $(document).ready(function() {
   // call cities api
   console.log(window.url);
   if (window.location.pathname.endsWith('cities')) {
+    $('body').on('click', '.city-name', (evt) => {
+      let $target = $(evt.target);
+      let cityRow = $target.parent().parent();
+      $('body .modal-header').text($target.parent().text());
+      let modalBody = `
+        <h1>Hier komt de kaart</h1>
+        <h2>Convoys: </h2>
+        <div class="modal-convoys"></div>
+      `;
+      $('body .modal-body').html(modalBody);
+    });
+
     let $citiesList = $('#cities-list');
-    $citiesList.append('<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>');
-    console.log('first cities call api');
+    // $citiesList.append('<a href="#" data-id="data-id" data-toggle="modal" data-target="#myModal" class="city-name">dit is test-tekst</a> ');
+
     setTimeout(() => {
       fetch('http://cunning-convoys.azurewebsites.net/api/Cities').then((response) => {
           return response.json();
         })
         .then((cities) => {
-          $citiesList.append('<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>');
         $citiesList.find('tbody').empty();
 
         cities.forEach((city, index) => {
           let cityTemplate = `<tr>
-                                <th scope="row">                                    
-                                    <a href="#" data-id="${city.id}">${city.name}</a>    
+                                <th scope="row" class="city-name">                                    
+                                    <a href="#" data-id="${city.id}" data-toggle="modal" data-target="#myModal">${city.name}</a>    
                                 </th>
                                 <td>${city.population}</td>
                                 <td>${city.area}</td>
