@@ -1,4 +1,21 @@
 $(document).ready(function() {
+  // call cities api
+  console.log(window.url);
+  if (window.location.pathname.endsWith('cities')) {
+    console.log('first cities call api');
+    setTimeout(() => {
+      console.log(`call cities api`);
+    }, 10000);
+  }
+
+  if (window.location.pathname.endsWith('convoys')) {
+
+  }
+
+  // if (window.location.pathname.endsWith('')) {
+  //
+  // }
+
   $.ajax({
     url: '/data',
     success: (data) => {
