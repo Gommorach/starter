@@ -11,3 +11,19 @@ block content
           th Area
           th Country
       tbody
+
+
+  #myModal.modal.fade(role='dialog')
+      .modal-dialog
+        // Modal content
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal') &times;
+            |
+            h4.modal-title Modal Header
+          |
+          .modal-body
+            p Some text in the modal.
+          |
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close

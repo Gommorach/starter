@@ -2,14 +2,15 @@ $(document).ready(function() {
   // call cities api
   console.log(window.url);
   if (window.location.pathname.endsWith('cities')) {
-
+    let $citiesList = $('#cities-list');
+    $citiesList.append('<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>');
     console.log('first cities call api');
     setTimeout(() => {
       fetch('http://cunning-convoys.azurewebsites.net/api/Cities').then((response) => {
           return response.json();
         })
         .then((cities) => {
-        $citiesList = $('#cities-list');
+          $citiesList.append('<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>');
         $citiesList.find('tbody').empty();
 
         cities.forEach((city, index) => {
