@@ -1,5 +1,15 @@
 extends layout
 
 block content
-  h1 Convoys overview
+  h1 Current convoys
   div#convoys-list
+    table.table.table-striped
+      thead
+        tr
+          th Destination
+          th Distance
+          th Speed
+          th Number of vehicles
+          th Coming from
+          th Pin to dashboard
+      tbody
